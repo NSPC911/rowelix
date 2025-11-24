@@ -25,34 +25,26 @@ go to your `config.toml` (found by running `rovr --config-path`) and add the fol
 # -c: command to run
 "plugins.editor.file_suspend" = false
 # disable rovr hiding itself when opening a file
+"plugins.editor.open_all_in_editor" = true
+# open every file in the editor regardless of encoding
+"interface.clock.enabled" = false
+# hide clock
+"interface.compact_mode.buttons" = true
+# compact header buttons
 ```
 
 #### optional rovr theme
-go to your `style.tcss` and add the following lines
-```scss
-/* change this to whatever you are using */
-$border-style: round;
+go to your `style.tcss` and add the lines from https://github.com/NSPC911/rowelix/blob/main/style.tcss to your theme
 
-App.helix,
-Application.helix {
-  #footer, #menuwrapper, #headerArea { display: none }
-  #file_list_container,
-  #pinned_sidebar_container,
-  #preview_sidebar {
-    border: none;
-    border-top: solid $border-blurred;
-    &:focus, &:focus-within { border-top: solid $border }
-  }
-  #file_list_container {
-    border-left: round $accent;
-    border-right: round $accent;
-  }
-  #main { margin: 0 }
-}
-```
-this makes it look a bit similar to yazi whereby there is only three panes. this isn't necessary, but it makes it look a bit cleaner
+this isn't necessary, but it makes the sidebar look especially nice
 
 ### helix setup
+add this to your `config.toml`, but use whatever keybind you want
+```toml
+[keys.normal]
+A-f = ":sh wezterm cli split-pane --left --cells 26 --cwd %{current_working_directory} rovr --mode helix"
+```
+
 nothing for now, but i will see what i can do with `--chooser-file` in the future
 
 # script
